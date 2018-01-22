@@ -43,6 +43,12 @@ public class MainActivity extends Activity {
 //        editor.putInt("uid", 234234234);
 //        editor.apply();
 
+        //BIGData
+        String data = "aHR0cDovL3d3dzEudGM3MTEuY29tL3Rvb2wvQkFTRTY0Lmh0bWh0dHA6Ly93d3cxLnRjNzExLmNvbS90b29sL0JBU0U2NC5odG1odHRwOi8vd3d3MS50YzcxMS5jb20vdG9vbC9CQVNFNjQuaHRtaHR0cDovL3d3dzEudGM3MTEuY29tL3Rvb2wvQkFTRTY0Lmh0bWh0dHA6Ly93d3cxLnRjNzExLmNvbS90b29sL0JBU0U2NC5odG1odHRwOi8vd3d3MS50YzcxMS5jb20vdG9vbC9CQVNFNjQuaHRtaHR0cDovL3d3dzEudGM3MTEuY29tL3Rvb2wvQkFTRTY0Lmh0bWh0dHA6Ly93d3cxLnRjNzExLmNvbS90b29sL0JBU0U2NC5odG1odHRwOi8vd3d3MS50YzcxMS5jb20vdG9vbC9CQVNFNjQuaHRtaHR0cDovL3d3dzEudGM3MTEuY29tL3Rvb2wvQkFTRTY0Lmh0bWh0dHA6Ly93d3cxLnRjNzExLmNvbS90b29sL0JBU0U2NC5odG1odHRwOi8vd3d3MS50YzcxMS5jb20vdG9vbC9CQVNFNjQuaHRtaHR0cDovL3d3dzEudGM3MTEuY29tL3Rvb2wvQkFTRTY0Lmh0bWh0dHA6Ly93d3cxLnRjNzExLmNvbS90b29sL0JBU0U2NC5odG1odHRwOi8vd3d3MS50YzcxMS5jb20vdG9vbC9CQVNFNjQuaHRtaHR0cDovL3d3dzEudGM3MTEuY29tL3Rvb2wvQkFTRTY0Lmh0bWh0dHA6Ly93d3cxLnRjNzExLmNvbS90b29sL0JBU0U2NC5odG1odHRwOi8vd3d3MS50YzcxMS5jb20vdG9vbC9CQVNFNjQuaHRt";
+        for (int i = 0; i < 100; i++) {
+            SharedPreferencesUtil.saveString("zzkey" + i, data, context);
+        }
+
         SharedPreferencesUtil.saveString("uid", 234234234 + "", context);
         saveData.setOnClickListener(new View.OnClickListener() {
             @Override
