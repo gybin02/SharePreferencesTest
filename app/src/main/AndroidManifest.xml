@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.meiyou.jet.myapplication"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.meiyou.jet.myapplication">
 
     <application
         android:allowBackup="true"
@@ -11,13 +11,17 @@
         android:theme="@style/AppTheme">
         <activity android:name="com.android.extremez.sharepreferencestest.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="com.android.extremez.sharepreferencestest.MyService"
-        android:process=":second"/>
+
+        <service
+            android:name="com.android.extremez.sharepreferencestest.MyService"
+            android:process=":second" />
+
+        <activity android:name="com.android.extremez.sharepreferencestest.GridActivity"></activity>
     </application>
 
 </manifest>
