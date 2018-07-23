@@ -15,13 +15,16 @@ import java.util.ArrayList;
  * @since 2018/7/23
  */
 class MyAdapter extends RecyclerView.Adapter {
+    private static final String TAG = "MyAdapter";
 
     private final ArrayList<GridActivity.Bean> dataList;
     private final Activity activity;
+    private final RecyclerView rv;
 
-    public MyAdapter(Activity activity, ArrayList<GridActivity.Bean> dataList) {
+    public MyAdapter(Activity activity, ArrayList<GridActivity.Bean> dataList, RecyclerView rv) {
         this.dataList = dataList;
         this.activity = activity;
+        this.rv = rv;
     }
 
     @Override
@@ -42,9 +45,27 @@ class MyAdapter extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         GridActivity.Bean bean = dataList.get(position);
-        ((TextView) holder.itemView.findViewById(R.id.textview)).setText(bean.text);
+        TextView textView = (TextView) holder.itemView.findViewById(R.id.textview);
+        final int count = dataList.size();
+        
+//        GridLayoutManager layoutManager = (GridLayoutManager) rv.getLayoutManager();
+//        int groupIndex = layoutManager.getSpanSizeLookup().getSpanGroupIndex(position, count);
+//        int spanIndex = layoutManager.getSpanSizeLookup().getSpanIndex(position, count);
+//        String format = String.format("%s; group: %s; span: %s",bean.text, groupIndex, spanIndex);
+
+        textView.setText(bean.text);
+//        textView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                GridLayoutManager layoutManager = (GridLayoutManager) rv.getLayoutManager();
+//                int groupIndex = layoutManager.getSpanSizeLookup().getSpanGroupIndex(position, count);
+//                int spanIndex = layoutManager.getSpanSizeLookup().getSpanIndex(position, count);
+//
+//                Log.e(TAG, "onClick: " + String.format("group: %s; span: %s", groupIndex, spanIndex));
+//            }
+//        });
     }
 
 

@@ -4,13 +4,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
 
 import com.meiyou.jet.myapplication.R;
 
 import java.util.ArrayList;
 
 public class GridActivity extends AppCompatActivity {
+    private static final String TAG = "GridActivity";
     ArrayList<Bean> dataList = new ArrayList<>();
+    private RecyclerView rv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +23,14 @@ public class GridActivity extends AppCompatActivity {
 
         initData();
 
-        RecyclerView rv = findViewById(R.id.recycle_view);
+        rv = findViewById(R.id.recycle_view);
+        View btn_test = findViewById(R.id.btn_test);
+        btn_test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setText();
+            }
+        });
 
         GridLayoutManager manager = new GridLayoutManager(this, 3);
         manager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -34,7 +45,21 @@ public class GridActivity extends AppCompatActivity {
         });
         rv.setLayoutManager(manager);
 
-        rv.setAdapter(new MyAdapter(this,dataList));
+        rv.setAdapter(new MyAdapter(this, dataList, rv));
+    }
+
+    private void setText() {
+        GridLayoutManager layoutManager = (GridLayoutManager) rv.getLayoutManager();
+        int size = dataList.size();
+        for (int position = 0; position < size; position++) {
+            Bean bean = dataList.get(position);
+            int count = size;
+            int groupIndex = layoutManager.getSpanSizeLookup().getSpanGroupIndex(position, count);
+            int spanIndex = layoutManager.getSpanSizeLookup().getSpanIndex(position, count);
+            String format = String.format("%s; group: %s; span: %s", bean.text, groupIndex, spanIndex);
+            Log.e(TAG, "setText: "+format );
+        }
+
     }
 
     private void initData() {
